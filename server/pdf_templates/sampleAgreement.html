@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Agreement</title>
+
+    <!-- <link rel="stylesheet" href="./styles.css" > -->
+    {{ styles | safe }}
+
+    
+    
+</head>
+<body>    
+    <h3>Terms and Conditions: </h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi officiis libero consequuntur quas maiores nostrum id porro a optio laboriosam eum repellendus iure, debitis saepe nemo dolorum! Autem dolores assumenda vero animi quas aut aliquam nisi, sint veritatis repellat ipsam eum ratione! Cum distinctio nulla nihil aliquid nobis ullam. Aut similique quis, sed architecto repudiandae quasi perferendis nihil, dolores dolorum rerum modi quas harum impedit. Illo commodi quisquam nulla cum repellendus, iure magni tempora blanditiis tenetur tempore quam esse alias. Debitis natus earum aut omnis nobis necessitatibus. Ut ad excepturi eligendi expedita error veritatis nisi officiis, obcaecati praesentium iste natus alias nemo, dolorum accusamus harum tempore repellendus voluptates molestiae sed consequuntur reprehenderit in voluptatibus quibusdam! Itaque laborum distinctio perspiciatis labore dicta hic quos? Eveniet cum fugit fuga distinctio minima, fugiat vel dolorem, maiores repellat, architecto voluptatibus a ullam quos. Vero laudantium, earum similique quae, non cupiditate atque neque, animi ea a ducimus. A, possimus. Sunt aliquam corrupti ut omnis quasi ea recusandae aliquid, impedit magnam? Voluptatem adipisci natus a enim ipsum dolores rem commodi ex. Illum obcaecati, reprehenderit voluptas delectus, molestiae placeat neque, earum atque tenetur fugit nihil quaerat quos eius distinctio dolores quisquam voluptatibus nisi similique sapiente praesentium consectetur.</p>
+
+    <div class="table-container">
+        <h3>Sign Here:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Signature</th>                
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for row in data.recipientList %}
+                <tr>
+                    <td>{{ row.name }}</td>
+                    <td>**{{ row.email }}**</td>                
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+
+    
+    
+</body>
+</html>

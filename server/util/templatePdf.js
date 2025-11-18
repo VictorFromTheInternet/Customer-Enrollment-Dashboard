@@ -73,10 +73,12 @@ export async function htmlToPdfBuffer(htmlStr){
     return pdfBuffer;
 }
 
-export async function createLocalPdf(buffer, filePath){
+export async function createLocalPdf(buffer, filename){
     try{
-        await fs.writeFile(filePath, buffer)
-        console.log('created file:', filePath)
+        const localPath = path.join(__dirname, '..', 'testpdfs', filename)
+        await fs.mkdir(dirname(localPath), {recursive: true})
+        await fs.writeFile(localPath, buffer)
+        console.log('created file:', localPath)
     }catch(err){
         console.error(err)
     }

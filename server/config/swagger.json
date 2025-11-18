@@ -45,6 +45,28 @@
           }
         }
       }
+    },
+    "/single-route/test": {      
+      "post": {
+        "tags":["Single Route"],
+        "summary": "Sample PDF ",
+        "description": "",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleAgreement"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Report created successfully."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -64,6 +86,25 @@
                 "lat": {"type":"number"},
                 "lon": {"type":"number"}
             }
+          }
+        },
+        "required": ["name"]
+      },
+      "SampleAgreement": {
+        "type": "object",
+        "properties": {
+          "recipientList": {
+            "type": "array",
+            "items":{
+              "type":"object",
+              "properties":{
+                "email": {"type":"string"},
+              "name": {"type":"string"}
+              }                
+            }
+          },
+          "customerName": {
+            "type":"string"            
           }
         },
         "required": ["name"]

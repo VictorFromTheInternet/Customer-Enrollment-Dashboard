@@ -14,9 +14,9 @@ import ReportSchema from '../models/Reports.js'
 
 
 //
-// Driver 
+// point a to b
 //
-export async function singleRoute(req, res){
+export async function singleRouteController(req, res){
     // connect to mongodb
     await mongoose.connect(process.env.mongodb_connection)    
 
@@ -86,4 +86,30 @@ export async function singleRoute(req, res){
     res.send({message:"success", uploadResults: mongoUploadResults})
 }
 
-export default singleRoute
+
+//
+// generate sample pdf
+//
+export async function testRouteController(req, res){
+    const {recipientList, customerName} = req.body
+
+    // create a sample pdf    
+    const htmlStr = await getPdfTemplateStr({
+        customerName: customerName,        
+        recipientList: recipientList
+    }, 'sampleAgreement') 
+    // console.log(htmlStr)
+    const pdfBuffer = await htmlToPdfBuffer(htmlStr)
+
+
+    // test, create local copy    
+    createLocalPdf(pdfBuffer, 'output.pdf')
+
+
+    // email to yourself
+    //await sendEmail(pdfBuffer)    
+
+    res.send({message:"success"})
+}
+
+export default singleRouteController
