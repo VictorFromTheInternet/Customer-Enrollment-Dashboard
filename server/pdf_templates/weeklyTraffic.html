@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link rel="stylesheet" href="./styles.css" > -->
+    {{ styles | safe }}
+</head>
+<body>    
+    <h1>Hello World</h1>
+    <p>Weekly Data: {{data.lat}} {{data.lon}}</p>
+
+    <!--
+    <table class="table">
+        <thead >
+            <tr class="table-header-secondary">
+                <th>
+                    Test
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data.table %}        
+            <tr>
+                <td>test</td>
+            </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
+    -->
+    
+</body>
+</html>

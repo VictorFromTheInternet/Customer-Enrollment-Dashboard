@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "client-s3": "github:aws-sdk/client-s3",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1",
+    "nodemailer": "^7.0.5",
+    "nunjucks": "^3.2.4",
+    "path": "^0.12.7",
+    "puppeteer": "^24.17.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "type": "module",
+  "name": "nodemailerhelloworld",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon main.js",
+    "start": "node main.js",
+    "singleRoute": "node single_route_check.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Traffic Analysis",
+    "description": "Using google routes api to capture and analyze trends in traffic",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api/",
+      "description": "Development server"
+    }
+  ],
+  "paths": {    
+    "/single-route/health-check": {      
+      "get": {
+        "tags":["Single Route"],
+        "summary": "Health Check ",
+        "description": "",       
+        "responses": {
+          "200": {
+            "description": "Health check successful"
+          }
+        }
+      }
+    },
+    "/single-route": {      
+      "post": {
+        "tags":["Single Route"],
+        "summary": "Create a report for current traffic conditions ",
+        "description": "Gets the route conditions between two lat/lon points using Google's Route API. Creates a pdf report, uploads it to an AWS S3 bucket. Creates a record in MongoDB with current conditions and a link to the pdf report",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleRoute"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Report created successfully."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {      
+      "SingleRoute": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "object",
+            "properties":{
+                "lat": {"type":"number"},
+                "lon": {"type":"number"}
+            }
+          },
+          "end": {
+            "properties":{
+                "lat": {"type":"number"},
+                "lon": {"type":"number"}
+            }
+          }
+        },
+        "required": ["name"]
+      }
+    }
+  }
+}
