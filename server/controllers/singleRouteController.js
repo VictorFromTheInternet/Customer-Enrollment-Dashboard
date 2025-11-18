@@ -99,6 +99,7 @@ export async function testRouteController(req, res){
         recipientList: recipientList
     }, 'sampleAgreement') 
     // console.log(htmlStr)
+    const base64Data = Buffer.from(htmlStr, 'utf8').toString('base64')
     const pdfBuffer = await htmlToPdfBuffer(htmlStr)
 
 
@@ -109,7 +110,9 @@ export async function testRouteController(req, res){
     // email to yourself
     //await sendEmail(pdfBuffer)    
 
-    res.send({message:"success"})
+
+
+    res.send({message:"success", base64Data: base64Data})
 }
 
 export default singleRouteController
