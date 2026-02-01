@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
+import Layout from './Layout'
 import {Button} from '@/components/ui/button' 
 
 import './App.css'
@@ -11,6 +9,7 @@ function App() {
 
   return (
     <>
+    <Layout>
       <input type="text" name="" id="" value={`${count}`} disabled/>
 
 
@@ -23,7 +22,7 @@ function App() {
           Decrement
         </Button>
       </div>
-
+    </Layout>   
 
     </>
   )
