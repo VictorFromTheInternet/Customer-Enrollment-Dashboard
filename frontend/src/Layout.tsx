@@ -1,4 +1,5 @@
 import {type ReactNode} from 'react'
+import { Link } from 'react-router-dom' 
 import {SidebarProvider, Sidebar, SidebarContent, SidebarInset} from '@/components/ui/sidebar' 
 
 interface LayoutProps {
@@ -11,14 +12,22 @@ function Layout({children}: LayoutProps){
             <Sidebar>
                 <SidebarContent>
                     <div className="p-4">
-                        <h2 className="text-lg font-semibold mb-4">
+                        <h2 className="text-lg font-semibold mb-4 text-left">
                             Enrollment Dashboard
                         </h2>
                         <nav className="flex flex-col justify-center align-center">
-                            <a href="#">Dashboard</a>
-                            <a href="#">New Referral</a>
-                            <a href="#">Enrollment</a>
-                            <a href="#">Customer</a>
+                            <Link to="/" className=" flex flex-start p-2 hover:bg-blue-100 rounded">
+                                Referral Dashboard
+                            </Link>                            
+                            <Link to="/referral-form" className="flex flex-start p-2 hover:bg-blue-100 rounded">
+                                Referral Form
+                            </Link>                            
+                            <Link to="/enrollment-form" className="flex flex-start p-2 hover:bg-blue-100 rounded">
+                                Enrollment Form
+                            </Link>                            
+                            <Link to="/customer-dash" className="flex flex-start p-2 hover:bg-blue-100 rounded">
+                                Customer Dashboard
+                            </Link>                            
                         </nav>
                     </div>
                 </SidebarContent>
