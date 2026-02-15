@@ -28,8 +28,7 @@
   "scripts": {
     "dev": "tsx watch main.ts",
     "build": "tsc",
-    "start": "node dist/main.js",
-    "singleRoute": "tsx single_route_check.ts"
+    "start": "node dist/main.js"
   },
   "author": "",
   "license": "ISC",

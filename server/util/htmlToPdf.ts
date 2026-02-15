@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-import nunjucks from 'nunjucks'
 import fs from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -8,40 +7,11 @@ import { dirname } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-// const templatesFolderPath = path.join(__dirname, '..', 'pdf_templates', 'weeklyTraffic.html' )
-// console.log(templatesFolderPath)
-nunjucks.configure('./pdf_templates', { autoescape: true })
 
-export async function getPdfTemplateStr(data: unknown, templateName: string) {
-    // call to db here
 
-    // calculations / averages
-
-    // get css data
-    const cssPath = path.join(__dirname, '..', 'pdf_templates', 'styles.css')
-    const cssStr = await fs.readFile(cssPath, 'utf-8')
-
-    // create pdf/html str
-    const renderedStr = nunjucks.render(`${templateName}.html`, { styles: `<style>${cssStr}</style>`, data })
-    // console.log(renderedStr)
-    return renderedStr
-}
-
-export async function getWeeklyPdf(data: unknown) {
-    // call to db here
-
-    // calculations / averages
-
-    // get css data
-    const cssPath = path.join(__dirname, '..', 'pdf_templates', 'styles.css')
-    const cssStr = await fs.readFile(cssPath, 'utf-8')
-
-    // create pdf/html str
-    const renderedStr = nunjucks.render('weeklyTraffic.html', { styles: `<style>${cssStr}</style>`, data })
-    // console.log(renderedStr)
-    return renderedStr
-}
-
+//
+// util functions
+//
 export async function htmlToPdfBuffer(htmlStr: string): Promise<Buffer> {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -66,7 +36,7 @@ export async function htmlToPdfBuffer(htmlStr: string): Promise<Buffer> {
             </div>
         `
     }))
-    await browser.close()
+    await browser.close()    
 
     return pdfBuffer
 }
@@ -82,4 +52,4 @@ export async function createLocalPdf(buffer: Buffer, filename: string) {
     }
 }
 
-export default getWeeklyPdf
+export default createLocalPdf

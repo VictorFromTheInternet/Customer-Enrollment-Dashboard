@@ -1,12 +1,13 @@
 import express, { Request, Response } from 'express'
-import { testRouteController, singleRouteController } from '../controllers/singleRouteController.js'
+import {getPdfTemplateHtml, getPdfTemplatePdf} from '../controllers/templatePdf.js'
 const router = express.Router()
 
 router.get('/health-check', (_req: Request, res: Response) => {
     res.send({ message: 'Hello World!' })
 })
 
-router.post('/', singleRouteController)
-router.post('/test', testRouteController)
+// api/templates/
+router.post('/html', getPdfTemplateHtml)
+router.post('/data', getPdfTemplatePdf)
 
 export default router

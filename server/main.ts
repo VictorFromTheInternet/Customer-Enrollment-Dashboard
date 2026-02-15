@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import singleRoute_Router from './routes/singleRoute.js'
+import pdf_router from './routes/pdfTemplateRouter.js'
 import docs_router from './routes/docs.js'
 
 dotenv.config()
@@ -13,7 +13,7 @@ app.use(express.json())
 
 // routes
 app.use('/docs', docs_router)
-app.use('/api/single-route', singleRoute_Router)
+app.use('/api/templates/', pdf_router)
 
 app.listen(PORT, () => {
     console.log(`app listening on port: ${PORT}`)
