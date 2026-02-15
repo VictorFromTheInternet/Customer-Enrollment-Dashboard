@@ -1,14 +1,16 @@
-import transporter from "../services/nodeMailer.js"
+import type { SendMailOptions } from 'nodemailer'
+import transporter from '../services/nodeMailer.js'
+
 //
 // Email
 //
-export async function sendEmail(pdfBuffer){
-    try{
-        const mailOptions = {
+export async function sendEmail(pdfBuffer: Buffer) {
+    try {
+        const mailOptions: SendMailOptions = {
             from: process.env.SMTP_SENDER_ID,
-            to:  'vma0430@gmail.com',
+            to: 'vma0430@gmail.com',
             subject: '👋 Welcome to my app!',
-            text:'Hello World!',
+            text: 'Hello World!',
             attachments: [
                 {
                     filename: 'weeklyTrafficReport.pdf',
@@ -17,14 +19,13 @@ export async function sendEmail(pdfBuffer){
                 }
             ]
         }
-        
+
         await transporter.sendMail(mailOptions)
         console.log('Email Sent!')
-    }catch(err){
+    } catch (err) {
         console.error(err)
-    }    
-
+    }
 }
-//sendEmail()   
+//sendEmail()
 
 export default sendEmail

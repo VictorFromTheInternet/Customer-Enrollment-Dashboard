@@ -12,16 +12,24 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@types/express": "^4.17.23",
+    "@types/node": "^22.10.6",
+    "@types/nodemailer": "^6.4.15",
+    "@types/nunjucks": "^3.2.10",
+    "@types/swagger-ui-express": "^4.1.6",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
   },
   "type": "module",
   "name": "nodemailerhelloworld",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "dev": "nodemon main.js",
-    "start": "node main.js",
-    "singleRoute": "node single_route_check.js"
+    "dev": "tsx watch main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "singleRoute": "tsx single_route_check.ts"
   },
   "author": "",
   "license": "ISC",

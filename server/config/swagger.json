@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Traffic Analysis",
-    "description": "Using google routes api to capture and analyze trends in traffic",
+    "title": "Customer Enrollment Dashboard API",
+    "description": "API for managing customer records and automating agreements for services.",
     "version": "1.0.0"
   },
   "servers": [
@@ -12,23 +12,23 @@
     }
   ],
   "paths": {    
-    "/single-route/health-check": {      
+    "/customer/health-check": {      
       "get": {
-        "tags":["Single Route"],
+        "tags":["Customer"],
         "summary": "Health Check ",
         "description": "",       
         "responses": {
           "200": {
-            "description": "Health check successful"
+            "description": "Up and running"
           }
         }
       }
     },
-    "/single-route": {      
+    "/customer/create": {      
       "post": {
-        "tags":["Single Route"],
-        "summary": "Create a report for current traffic conditions ",
-        "description": "Gets the route conditions between two lat/lon points using Google's Route API. Creates a pdf report, uploads it to an AWS S3 bucket. Creates a record in MongoDB with current conditions and a link to the pdf report",
+        "tags":["Customer"],
+        "summary": "Create a record for a customer",
+        "description": "Create a record for a customer ",
         "requestBody": {
           "required": false,
           "content": {
