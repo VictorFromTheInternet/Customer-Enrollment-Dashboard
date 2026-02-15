@@ -47,7 +47,7 @@ export async function htmlToPdfBuffer(htmlStr: string): Promise<Buffer> {
     const page = await browser.newPage()
 
     await page.setContent(htmlStr, { waitUntil: 'networkidle0' })
-    const pdfBuffer = await page.pdf({
+    const pdfBuffer = Buffer.from(await page.pdf({
         format: 'A4',
         landscape: false,
         height: '11in',
@@ -65,7 +65,7 @@ export async function htmlToPdfBuffer(htmlStr: string): Promise<Buffer> {
                 <p>Page <span class="pageNumber"></span> of <span class="totalPages"></span></p>
             </div>
         `
-    })
+    }))
     await browser.close()
 
     return pdfBuffer
